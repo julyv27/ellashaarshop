@@ -25,6 +25,7 @@ De app draait lokaal via Wrangler Pages Dev. Zet voor lokale ontwikkeling variab
 
 ```bash
 npm run import:catalog     # Excel-bronbestand valideren en seed SQL genereren
+npm run import:salon-products -- "/pad/naar/bestand.xlsx" 970
 npm run db:local:apply     # migrations + gegenereerde seed toepassen op lokale D1
 npm run test               # unit/integratietests
 npm run build              # frontend build
@@ -54,6 +55,8 @@ npm run import:catalog
 npx wrangler d1 migrations apply ellashaarshop-db --remote
 npx wrangler d1 execute ellashaarshop-db --remote --file=./generated/catalog-seed.sql
 ```
+
+Aanvullende salonproducten uit `Salon_producten_fotos_aparte_ml_varianten (1).xlsx` zijn geïmporteerd als `EH-0970` t/m `EH-1149`. De import normaliseert `Schwarzkopf Professional` naar `Schwarzkopf` en `Wella Professionals` naar `Wella`, en laat leverancier/EAN/leveranciersartikelnummer leeg wanneer die niet in het bestand staan.
 
 ## Nieuwe allowed e-mailadressen
 

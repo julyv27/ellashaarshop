@@ -1,0 +1,38 @@
+{
+  "source": "/Users/julia/Downloads/Salon_producten_fotos_aparte_ml_varianten (1).xlsx",
+  "startCode": 970,
+  "endCode": 1149,
+  "importedProducts": 180,
+  "rejectedRows": 0,
+  "byBrand": {
+    "INDOLA": 37,
+    "L'Oréal Professionnel": 43,
+    "Schwarzkopf": 48,
+    "Wella": 52
+  },
+  "byCategory": {
+    "Haarverzorging": 124,
+    "Styling": 56
+  },
+  "byProductType": {
+    "Shampoo": 63,
+    "Conditioner": 22,
+    "Treatment": 16,
+    "Hittebescherming": 2,
+    "Gel": 6,
+    "Haarlak": 11,
+    "Mousse": 10,
+    "Styling spray": 20,
+    "Haarolie / serum": 4,
+    "Haarmasker": 17,
+    "Leave-in": 2,
+    "Wax / paste": 7
+  },
+  "preparedMasterdata": {
+    "brands": 4,
+    "categories": 2,
+    "productTypes": 12,
+    "productLines": 33
+  },
+  "rejected": []
+}

@@ -11,6 +11,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "import:catalog": "tsx scripts/import-catalog.ts",
+    "import:salon-products": "tsx scripts/import-salon-products.ts",
     "db:local:migrations": "wrangler d1 migrations apply ellashaarshop-db --local --persist-to .wrangler/state",
     "db:local:seed": "wrangler d1 execute ellashaarshop-db --local --persist-to .wrangler/state --file=./generated/catalog-seed.sql",
     "db:local:apply": "npm run db:local:migrations && npm run db:local:seed",
