@@ -1,0 +1,30 @@
+{
+  "source": "Ellas_Haarshop_master_productcatalogus_merken_en_lijnen.xlsx",
+  "importedProducts": 969,
+  "rejectedRows": 0,
+  "byBrand": {
+    "INDOLA": 101,
+    "L'Oréal Professionnel": 274,
+    "Schwarzkopf": 228,
+    "Wella": 310,
+    "KIS": 56
+  },
+  "byProductType": {
+    "Verf": 651,
+    "Toner": 318
+  },
+  "possibleDuplicates": [
+    {
+      "key": "indola|pcc|indola pcc 10.0|10.0|60|ml",
+      "count": 2
+    }
+  ],
+  "preparedMasterdata": {
+    "brands": 7,
+    "categories": 5,
+    "productTypes": 20,
+    "productLines": 16,
+    "suppliers": 1
+  },
+  "rejected": []
+}
