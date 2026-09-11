@@ -151,14 +151,18 @@ function ProductsView(props: {
           const image = productImage(product);
           return (
             <article className={product.active ? "product-card" : "product-card inactive"} key={product.id}>
-              <div className="product-image" aria-hidden={!image}>
-                {image ? <img src={image.src} alt={image.alt} loading="lazy" /> : <span>{product.brand_name.slice(0, 2)}</span>}
-              </div>
-              <div>
-                <p className="eyebrow">{product.brand_name}{product.product_line_name ? ` - ${product.product_line_name}` : ""}</p>
+              <header className="product-card-title">
                 <h2>{product.product_name}</h2>
-                <p>{[product.variant_group, product.shade_code ? `Kleur ${product.shade_code}` : "", contentLabel(product)].filter(Boolean).join(" - ")}</p>
-                <small>{product.internal_product_code} - {product.product_type_name}</small>
+                <p className="eyebrow">{product.brand_name}{product.product_line_name ? ` - ${product.product_line_name}` : ""}</p>
+              </header>
+              <div className="product-card-body">
+                <div className="product-image" aria-hidden={!image}>
+                  {image ? <img src={image.src} alt={image.alt} loading="lazy" /> : <span>{product.brand_name.slice(0, 2)}</span>}
+                </div>
+                <div className="product-meta">
+                  <p>{[product.variant_group, product.shade_code ? `Kleur ${product.shade_code}` : "", contentLabel(product)].filter(Boolean).join(" - ")}</p>
+                  <small>{product.internal_product_code} - {product.product_type_name}</small>
+                </div>
               </div>
               <Quantity value={quantity} onChange={(next) => props.changeQuantity(product, next)} />
             </article>
