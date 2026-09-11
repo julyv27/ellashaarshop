@@ -5,6 +5,7 @@ import type { CartItem, FiltersPayload, OrderDetail, OrderSummary, Product, User
 import { api } from "./api";
 import { exportExcel, exportPdf } from "./exports";
 import { loadCart, saveCart, setQuantity, totals } from "./cart";
+import { productImage } from "./productImages";
 
 type View = "products" | "cart" | "history" | "admin";
 
@@ -147,8 +148,12 @@ function ProductsView(props: {
       <section className="product-grid">
         {props.products.map((product) => {
           const quantity = props.cart[product.id]?.quantity ?? 0;
+          const image = productImage(product);
           return (
             <article className={product.active ? "product-card" : "product-card inactive"} key={product.id}>
+              <div className="product-image" aria-hidden={!image}>
+                {image ? <img src={image.src} alt={image.alt} loading="lazy" /> : <span>{product.brand_name.slice(0, 2)}</span>}
+              </div>
               <div>
                 <p className="eyebrow">{product.brand_name}{product.product_line_name ? ` - ${product.product_line_name}` : ""}</p>
                 <h2>{product.product_name}</h2>
