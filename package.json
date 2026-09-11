@@ -1,0 +1,41 @@
+{
+  "name": "ellashaarshop",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run build && wrangler pages dev dist --d1 ELLAS_DB=$(node scripts/d1-binding-id.mjs) --compatibility-date=2026-09-11 --persist-to .wrangler/state",
+    "dev:vite": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "import:catalog": "tsx scripts/import-catalog.ts",
+    "db:local:migrations": "wrangler d1 migrations apply ellashaarshop-db --local --persist-to .wrangler/state",
+    "db:local:seed": "wrangler d1 execute ellashaarshop-db --local --persist-to .wrangler/state --file=./generated/catalog-seed.sql",
+    "db:local:apply": "npm run db:local:migrations && npm run db:local:seed",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.2",
+    "fflate": "0.8.3",
+    "lucide-react": "^0.542.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260911.1",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^24.3.1",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "jsdom": "^26.1.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.4",
+    "vitest": "5.0.0",
+    "wrangler": "^4.34.0"
+  }
+}
