@@ -87,13 +87,20 @@ SELECT
   p.supplier_sku,
   p.barcode_gtin,
   p.active,
-  p.search_text
+  p.search_text,
+  COALESCE(os.total_ordered, 0) AS total_ordered
 FROM products p
 JOIN brands b ON b.id = p.brand_id
 JOIN categories c ON c.id = p.category_id
 JOIN product_types pt ON pt.id = p.product_type_id
 LEFT JOIN product_lines pl ON pl.id = p.product_line_id
 LEFT JOIN suppliers s ON s.id = p.supplier_id
+LEFT JOIN (
+  SELECT product_id, SUM(quantity) AS total_ordered
+  FROM order_items
+  WHERE product_id IS NOT NULL
+  GROUP BY product_id
+) os ON os.product_id = p.id
 `;
 
 async function listProducts(context: PagesContext, url: URL) {
@@ -119,7 +126,10 @@ async function listProducts(context: PagesContext, url: URL) {
     binds.push(productTypeId);
   }
 
-  let order = "b.name, COALESCE(pl.name, ''), p.product_name, COALESCE(p.shade_code, '')";
+  const hasFilters = Boolean(search || brandId || categoryId || productTypeId || includeInactive);
+  let order = hasFilters
+    ? "b.name, COALESCE(pl.name, ''), p.product_name, COALESCE(p.shade_code, '')"
+    : "COALESCE(os.total_ordered, 0) DESC, b.name, COALESCE(pl.name, ''), p.product_name, COALESCE(p.shade_code, '')";
   if (search) {
     const terms = searchTerms(search);
     const like = `%${search.toLowerCase()}%`;

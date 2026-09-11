@@ -208,6 +208,16 @@ main {
   border: 1px solid #e4dcc9;
   border-radius: 8px;
   padding: 16px;
+  box-shadow: 0 1px 2px rgba(33, 29, 24, 0.04);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease, background-color 160ms ease;
+}
+
+.product-card:hover,
+.product-card:focus-within {
+  background: #fffdf8;
+  border-color: #d7aa00;
+  box-shadow: 0 10px 24px rgba(120, 91, 0, 0.16);
+  transform: translateY(-2px);
 }
 
 .product-card-title {
