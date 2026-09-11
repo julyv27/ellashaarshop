@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { searchTerms } from "../../src/shared/search";
 
 interface Env {
   ELLAS_DB: D1Database;
@@ -120,17 +121,34 @@ async function listProducts(context: PagesContext, url: URL) {
 
   let order = "b.name, COALESCE(pl.name, ''), p.product_name, COALESCE(p.shade_code, '')";
   if (search) {
-    where.push("(p.search_text LIKE ? OR p.shade_code = ? OR p.product_name LIKE ?)");
+    const terms = searchTerms(search);
     const like = `%${search.toLowerCase()}%`;
-    binds.push(like, search, `%${search}%`);
+    for (const term of terms) {
+      const shadeVariantChecks = term.variants.map(() => "lower(COALESCE(p.shade_code, '')) LIKE ?").join(" OR ");
+      if (/^\d{1,2}$/.test(term.lower)) {
+        where.push(`(${shadeVariantChecks} OR lower(p.product_name) LIKE ? OR p.search_text LIKE ?)`);
+        binds.push(...term.variants.map((variant) => `${variant}%`));
+        binds.push(`% ${term.lower}%`, `% ${term.lower}%`);
+      } else {
+        const variantChecks = term.variants.map(() => "p.search_text LIKE ?").join(" OR ");
+        where.push(`(${variantChecks} OR ${shadeVariantChecks} OR lower(p.product_name) LIKE ?)`);
+        binds.push(...term.variants.map((variant) => `%${variant}%`));
+        binds.push(...term.variants.map((variant) => `${variant}%`));
+        binds.push(`%${term.lower}%`);
+      }
+    }
     order = `CASE
       WHEN p.shade_code = ? THEN 0
       WHEN lower(p.product_name) = lower(?) THEN 1
       WHEN lower(p.product_name) LIKE lower(?) THEN 2
-      WHEN p.search_text LIKE ? THEN 3
-      ELSE 4
+      WHEN lower(COALESCE(p.shade_code, '')) LIKE ? THEN 3
+      WHEN p.search_text LIKE ? THEN 4
+      WHEN ${terms.map(() => "p.search_text LIKE ?").join(" AND ")} THEN 5
+      ELSE 6
     END, ${order}`;
-    binds.push(search, search, `${search}%`, like);
+    const firstNumericTerm = terms.find((term) => /^\d{1,2}$/.test(term.lower));
+    binds.push(search, search, `${search}%`, firstNumericTerm ? `${firstNumericTerm.lower}%` : `${search.toLowerCase()}%`, like);
+    binds.push(...terms.map((term) => `%${term.lower}%`));
   }
 
   binds.push(limit);

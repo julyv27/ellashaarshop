@@ -55,8 +55,10 @@ export function App() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <div>
-          <h1>Ella's Haarshop</h1>
+        <div className="brand">
+          <span className="brand-logo-frame">
+            <img src="/assets/ellas-logo.png" alt="Ella's Haarshop" />
+          </span>
           <p>{user?.email ?? "Private bestelsysteem"}</p>
         </div>
         <nav>
