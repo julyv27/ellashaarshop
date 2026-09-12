@@ -18,7 +18,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 export const api = {
   me: () => request<{ user: UserInfo }>("me"),
   filters: () => request<FiltersPayload>("filters"),
-  products: (params: URLSearchParams) => request<{ products: Product[] }>(`products?${params.toString()}`),
+  products: (params: URLSearchParams) => request<{ products: Product[]; hasMore: boolean; nextOffset: number }>(`products?${params.toString()}`),
   saveOrder: (items: Array<{ productId: number; quantity: number }>) => request<{ order: OrderSummary }>("orders", {
     method: "POST",
     body: JSON.stringify({ items })

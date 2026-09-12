@@ -109,7 +109,8 @@ async function listProducts(context: PagesContext, url: URL) {
   const categoryId = numberParam(url, "categoryId");
   const productTypeId = numberParam(url, "productTypeId");
   const includeInactive = url.searchParams.get("includeInactive") === "true";
-  const limit = Math.min(numberParam(url, "limit") ?? 120, 300);
+  const limit = Math.min(numberParam(url, "limit") ?? 120, 240);
+  const offset = Math.max(numberParam(url, "offset") ?? 0, 0);
 
   const where = includeInactive ? ["1=1"] : ["p.active = 1"];
   const binds: unknown[] = [];
@@ -161,9 +162,10 @@ async function listProducts(context: PagesContext, url: URL) {
     binds.push(...terms.map((term) => `%${term.lower}%`));
   }
 
-  binds.push(limit);
-  const result = await context.env.ELLAS_DB.prepare(`${productSelect} WHERE ${where.join(" AND ")} ORDER BY ${order} LIMIT ?`).bind(...binds).all();
-  return json({ products: result.results });
+  binds.push(limit + 1, offset);
+  const result = await context.env.ELLAS_DB.prepare(`${productSelect} WHERE ${where.join(" AND ")} ORDER BY ${order} LIMIT ? OFFSET ?`).bind(...binds).all();
+  const products = result.results.slice(0, limit);
+  return json({ products, hasMore: result.results.length > limit, nextOffset: offset + products.length });
 }
 
 async function filters(context: PagesContext) {

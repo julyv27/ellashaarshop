@@ -20,6 +20,9 @@ export function App() {
   const [categoryId, setCategoryId] = useState("");
   const [productTypeId, setProductTypeId] = useState("");
   const [includeInactive, setIncludeInactive] = useState(false);
+  const [hasMoreProducts, setHasMoreProducts] = useState(false);
+  const [nextProductsOffset, setNextProductsOffset] = useState(0);
+  const [loadingMoreProducts, setLoadingMoreProducts] = useState(false);
   const [message, setMessage] = useState("");
   const count = totals(cart);
 
@@ -40,7 +43,11 @@ export function App() {
     if (productTypeId) params.set("productTypeId", productTypeId);
     if (includeInactive) params.set("includeInactive", "true");
     params.set("limit", "180");
-    api.products(params).then((data) => setProducts(data.products)).catch((error) => setMessage(error.message));
+    api.products(params).then((data) => {
+      setProducts(data.products);
+      setHasMoreProducts(data.hasMore);
+      setNextProductsOffset(data.nextOffset);
+    }).catch((error) => setMessage(error.message));
   }, [query, brandId, categoryId, productTypeId, includeInactive]);
 
   const visibleTypes = useMemo(() => filters.productTypes.filter((type) => !categoryId || String(type.category_id) === categoryId), [filters.productTypes, categoryId]);
@@ -51,6 +58,28 @@ export function App() {
 
   function refreshFilters() {
     api.filters().then(setFilters).catch((error) => setMessage(error.message));
+  }
+
+  async function loadMoreProducts() {
+    setLoadingMoreProducts(true);
+    const params = new URLSearchParams();
+    if (query) params.set("q", query);
+    if (brandId) params.set("brandId", brandId);
+    if (categoryId) params.set("categoryId", categoryId);
+    if (productTypeId) params.set("productTypeId", productTypeId);
+    if (includeInactive) params.set("includeInactive", "true");
+    params.set("limit", "180");
+    params.set("offset", String(nextProductsOffset));
+    try {
+      const data = await api.products(params);
+      setProducts((current) => [...current, ...data.products]);
+      setHasMoreProducts(data.hasMore);
+      setNextProductsOffset(data.nextOffset);
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Er ging iets mis.");
+    } finally {
+      setLoadingMoreProducts(false);
+    }
   }
 
   return (
@@ -94,6 +123,9 @@ export function App() {
             cart={cart}
             changeQuantity={changeQuantity}
             count={count}
+            hasMore={hasMoreProducts}
+            loadingMore={loadingMoreProducts}
+            loadMore={loadMoreProducts}
           />
         )}
         {view === "cart" && <CartView cart={cart} setCart={setCart} setView={setView} setMessage={setMessage} />}
@@ -121,6 +153,9 @@ function ProductsView(props: {
   cart: Record<number, CartItem>;
   changeQuantity: (product: Product, quantity: number) => void;
   count: { unique: number; quantity: number };
+  hasMore: boolean;
+  loadingMore: boolean;
+  loadMore: () => void;
 }) {
   return (
     <>
@@ -169,6 +204,13 @@ function ProductsView(props: {
           );
         })}
       </section>
+      {props.hasMore && (
+        <div className="load-more">
+          <button onClick={props.loadMore} disabled={props.loadingMore}>
+            {props.loadingMore ? "Laden..." : "Meer producten laden"}
+          </button>
+        </div>
+      )}
     </>
   );
 }
