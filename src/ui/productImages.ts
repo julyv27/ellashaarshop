@@ -18,6 +18,30 @@ export function productImage(product: Product): ProductImage | null {
   if (has(brand, "INDOLA") && has(combined, "Highlift")) {
     return { src: "/assets/products/indola-highlift.webp", alt: "INDOLA Blonde Expert Highlift" };
   }
+  if (has(brand, "Wella") && has(combined, "Perform+ Perm") && product.shade_code === "N") {
+    return { src: "/assets/products/wella-perform-perm-n.jpg", alt: "Wella Perform+ Perm Lotion N" };
+  }
+  if (has(brand, "Wella") && has(combined, "Perform+ Perm") && product.shade_code === "C") {
+    return { src: "/assets/products/wella-perform-perm-c.jpg", alt: "Wella Perform+ Perm Lotion C" };
+  }
+  if (has(brand, "Schwarzkopf") && has(combined, "Strait Styling Glatt") && product.shade_code === "0") {
+    return { src: "/assets/products/schwarzkopf-glatt-0.jpg", alt: "Schwarzkopf Strait Styling Glatt 0" };
+  }
+  if (has(brand, "Schwarzkopf") && has(combined, "Strait Styling Glatt") && product.shade_code === "1") {
+    return { src: "/assets/products/schwarzkopf-glatt-1.jpg", alt: "Schwarzkopf Strait Styling Glatt 1" };
+  }
+  if (has(brand, "Schwarzkopf") && has(combined, "Natural Styling") && has(combined, "Neutraliser")) {
+    return { src: "/assets/products/schwarzkopf-natural-styling-neutraliser.jpg", alt: "Schwarzkopf Natural Styling Hydrowave Neutraliser" };
+  }
+  if (has(brand, "Schwarzkopf") && has(combined, "Glamour Wave") && product.shade_code === "0") {
+    return { src: "/assets/products/schwarzkopf-glamour-wave-0.webp", alt: "Schwarzkopf Natural Styling Glamour Wave 0" };
+  }
+  if (has(brand, "Schwarzkopf") && has(combined, "Glamour Wave") && product.shade_code === "1") {
+    return { src: "/assets/products/schwarzkopf-glamour-wave-1.jpg", alt: "Schwarzkopf Natural Styling Glamour Wave 1" };
+  }
+  if (has(brand, "Schwarzkopf") && has(combined, "Glamour Wave") && product.shade_code === "2") {
+    return { src: "/assets/products/schwarzkopf-glamour-wave-2.jpg", alt: "Schwarzkopf Natural Styling Glamour Wave 2" };
+  }
   if (has(brand, "Schwarzkopf") && has(combined, "Igora") && has(combined, "Absolut")) {
     return { src: "/assets/products/schwarzkopf-igora-absolutes.webp", alt: "Schwarzkopf Igora Royal Absolutes" };
   }

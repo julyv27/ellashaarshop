@@ -43,5 +43,13 @@ describe("product images", () => {
     expect(productImage({ ...base, brand_name: "INDOLA", product_line_name: "Care", product_name: "INDOLA Care Color Shampoo" })?.src).toBe("/assets/products/indola-care.jpg");
     expect(productImage({ ...base, brand_name: "INDOLA", product_line_name: "Care & Style", product_name: "INDOLA Care & Style Hair Spray" })?.src).toBe("/assets/products/indola-care-style.webp");
     expect(productImage({ ...base, brand_name: "INDOLA", product_line_name: "Color Style Mousse", product_name: "INDOLA Color Style Mousse" })?.src).toBe("/assets/products/indola-color-style-mousse.jpg");
+    expect(productImage({ ...base, brand_name: "Wella", product_line_name: "Perform+ Perm", product_name: "Wella Perform+ Perm Perform+ Perm Lotion N", shade_code: "N" })?.src).toBe("/assets/products/wella-perform-perm-n.jpg");
+    expect(productImage({ ...base, brand_name: "Wella", product_line_name: "Perform+ Perm", product_name: "Wella Perform+ Perm Perform+ Perm Lotion C", shade_code: "C" })?.src).toBe("/assets/products/wella-perform-perm-c.jpg");
+    expect(productImage({ ...base, product_line_name: "Strait Styling Glatt", product_name: "Schwarzkopf Strait Styling Glatt Strait Styling Glatt 0", shade_code: "0" })?.src).toBe("/assets/products/schwarzkopf-glatt-0.jpg");
+    expect(productImage({ ...base, product_line_name: "Strait Styling Glatt", product_name: "Schwarzkopf Strait Styling Glatt Strait Styling Glatt 1", shade_code: "1" })?.src).toBe("/assets/products/schwarzkopf-glatt-1.jpg");
+    expect(productImage({ ...base, product_line_name: "Natural Styling Hydrowave", product_name: "Schwarzkopf Natural Styling Hydrowave Natural Styling Neutraliser Fixing Lotion 0/1", shade_code: "0/1" })?.src).toBe("/assets/products/schwarzkopf-natural-styling-neutraliser.jpg");
+    expect(productImage({ ...base, product_line_name: "Natural Styling Hydrowave Glamour Wave", product_name: "Schwarzkopf Natural Styling Hydrowave Glamour Wave Glamour Wave Perm Lotion 0", shade_code: "0" })?.src).toBe("/assets/products/schwarzkopf-glamour-wave-0.webp");
+    expect(productImage({ ...base, product_line_name: "Natural Styling Hydrowave Glamour Wave", product_name: "Schwarzkopf Natural Styling Hydrowave Glamour Wave Glamour Wave Perm Lotion 1", shade_code: "1" })?.src).toBe("/assets/products/schwarzkopf-glamour-wave-1.jpg");
+    expect(productImage({ ...base, product_line_name: "Natural Styling Hydrowave Glamour Wave", product_name: "Schwarzkopf Natural Styling Hydrowave Glamour Wave Glamour Wave Perm Lotion 2", shade_code: "2" })?.src).toBe("/assets/products/schwarzkopf-glamour-wave-2.jpg");
   });
 });
