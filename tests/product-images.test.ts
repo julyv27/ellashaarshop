@@ -51,5 +51,6 @@ describe("product images", () => {
     expect(productImage({ ...base, product_line_name: "Natural Styling Hydrowave Glamour Wave", product_name: "Schwarzkopf Natural Styling Hydrowave Glamour Wave Glamour Wave Perm Lotion 0", shade_code: "0" })?.src).toBe("/assets/products/schwarzkopf-glamour-wave-0.webp");
     expect(productImage({ ...base, product_line_name: "Natural Styling Hydrowave Glamour Wave", product_name: "Schwarzkopf Natural Styling Hydrowave Glamour Wave Glamour Wave Perm Lotion 1", shade_code: "1" })?.src).toBe("/assets/products/schwarzkopf-glamour-wave-1.jpg");
     expect(productImage({ ...base, product_line_name: "Natural Styling Hydrowave Glamour Wave", product_name: "Schwarzkopf Natural Styling Hydrowave Glamour Wave Glamour Wave Perm Lotion 2", shade_code: "2" })?.src).toBe("/assets/products/schwarzkopf-glamour-wave-2.jpg");
+    expect(productImage({ ...base, brand_name: "La Riché", product_line_name: "Directions", product_name: "La Riché Directions Alpine Green", shade_code: "Alpine Green" })?.src).toBe("/assets/products/la-riche-directions.jpg");
   });
 });

@@ -42,6 +42,9 @@ export function productImage(product: Product): ProductImage | null {
   if (has(brand, "Schwarzkopf") && has(combined, "Glamour Wave") && product.shade_code === "2") {
     return { src: "/assets/products/schwarzkopf-glamour-wave-2.jpg", alt: "Schwarzkopf Natural Styling Glamour Wave 2" };
   }
+  if (has(brand, "La Riché") && has(combined, "Directions")) {
+    return { src: "/assets/products/la-riche-directions.jpg", alt: "La Riché Directions" };
+  }
   if (has(brand, "Schwarzkopf") && has(combined, "Igora") && has(combined, "Absolut")) {
     return { src: "/assets/products/schwarzkopf-igora-absolutes.webp", alt: "Schwarzkopf Igora Royal Absolutes" };
   }
