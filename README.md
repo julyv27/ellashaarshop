@@ -26,7 +26,7 @@ De app draait lokaal via Wrangler Pages Dev. Zet voor lokale ontwikkeling variab
 ```bash
 npm run import:catalog     # Excel-bronbestand valideren en seed SQL genereren
 npm run import:salon-products -- "/pad/naar/bestand.xlsx" 970
-npm run import:new-products -- 1150 "/pad/naar/omvorming.xlsx" "/pad/naar/la-riche.xlsx"
+npm run import:new-products -- 1150 "/pad/naar/permanent- en ontkrulbehandelingen.xlsx" "/pad/naar/la-riche.xlsx"
 npm run db:local:apply     # migrations + gegenereerde seed toepassen op lokale D1
 npm run test               # unit/integratietests
 npm run build              # frontend build
@@ -59,7 +59,7 @@ npx wrangler d1 execute ellashaarshop-db --remote --file=./generated/catalog-see
 
 Aanvullende salonproducten uit `Salon_producten_fotos_aparte_ml_varianten (1).xlsx` zijn geïmporteerd als `EH-0970` t/m `EH-1149`. De import normaliseert `Schwarzkopf Professional` naar `Schwarzkopf` en `Wella Professionals` naar `Wella`, en laat leverancier/EAN/leveranciersartikelnummer leeg wanneer die niet in het bestand staan.
 
-Nieuwe omvorming/styling en La Riché Directions-producten zijn geïmporteerd als `EH-1150` t/m `EH-1204`. `La Riche` wordt als merk `La Riché` opgeslagen.
+Nieuwe permanent- en ontkrulbehandelingen/styling en La Riché Directions-producten zijn geïmporteerd als `EH-1150` t/m `EH-1204`. `La Riche` wordt als merk `La Riché` opgeslagen.
 
 ## Nieuwe allowed e-mailadressen
 

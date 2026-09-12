@@ -5,13 +5,13 @@ const report = JSON.parse(fs.readFileSync("generated/new-products-import-report.
 const seed = fs.readFileSync("generated/new-products-seed.sql", "utf8");
 
 describe("new products import", () => {
-  it("imports omvorming, styling and La Riché Directions products", () => {
+  it("imports permanent- en ontkrulbehandelingen, styling and La Riché Directions products", () => {
     expect(report.importedProducts).toBe(55);
     expect(report.rejectedRows).toBe(0);
     expect(report.startCode).toBe(1150);
     expect(report.endCode).toBe(1204);
     expect(report.byBrand).toEqual({ Wella: 2, Schwarzkopf: 6, INDOLA: 1, "La Riché": 46 });
-    expect(report.byCategory).toEqual({ Omvorming: 8, Styling: 1, Kleur: 46 });
+    expect(report.byCategory).toEqual({ "Permanent- en ontkrulbehandelingen": 8, Styling: 1, Kleur: 46 });
     expect(report.possibleDuplicates).toEqual([]);
   });
 

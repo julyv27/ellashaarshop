@@ -70,7 +70,7 @@ function main() {
       const productType = categoryRaw === "Permanentlotion" ? "Permanentlotion" : categoryRaw === "Permanent ontkrullen" ? "Permanent ontkrullen" : categoryRaw === "Neutralisatie / fixatie" ? "Neutralisatie / fixatie" : "Mousse";
       rows.push(rowFor({
         brand: normalizedBrand,
-        category: productType === "Mousse" ? "Styling" : "Omvorming",
+        category: productType === "Mousse" ? "Styling" : "Permanent- en ontkrulbehandelingen",
         productType,
         productLine: line,
         variantGroup: info,
@@ -124,7 +124,7 @@ function main() {
 
   const sql = ["PRAGMA foreign_keys = ON;"];
   brands.forEach((brand) => sql.push(insert("brands", { name: brand, active: 1 })));
-  categories.forEach((category, index) => sql.push(insert("categories", { name: category, active: 1, sort_order: category === "Omvorming" ? 6 : index + 1 })));
+  categories.forEach((category, index) => sql.push(insert("categories", { name: category, active: 1, sort_order: category === "Permanent- en ontkrulbehandelingen" ? 6 : index + 1 })));
   productTypes.forEach((type, index) => sql.push(`INSERT OR IGNORE INTO product_types (category_id, name, active, sort_order) SELECT id, ${sqlString(type.name)}, 1, ${index + 1} FROM categories WHERE name = ${sqlString(type.category)};`));
   lines.forEach((line) => sql.push(`INSERT OR IGNORE INTO product_lines (brand_id, name, active) SELECT id, ${sqlString(line.name)}, 1 FROM brands WHERE name = ${sqlString(line.brand)};`));
 
