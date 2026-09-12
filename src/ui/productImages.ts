@@ -33,6 +33,18 @@ export function productImage(product: Product): ProductImage | null {
   if (has(brand, "INDOLA") && has(combined, "PCC")) {
     return { src: "/assets/products/indola-pcc.webp", alt: "INDOLA PCC" };
   }
+  if (has(brand, "INDOLA") && has(combined, "Color Style Mousse")) {
+    return { src: "/assets/products/indola-color-style-mousse.jpg", alt: "INDOLA Color Style Mousse" };
+  }
+  if (has(brand, "INDOLA") && has(combined, "Blonde Expert")) {
+    return { src: "/assets/products/indola-blonde-expert-care.jpg", alt: "INDOLA Blonde Expert" };
+  }
+  if (has(brand, "INDOLA") && has(combined, "Care & Style")) {
+    return { src: "/assets/products/indola-care-style.webp", alt: "INDOLA Care & Style" };
+  }
+  if (has(brand, "INDOLA") && has(combined, "Care")) {
+    return { src: "/assets/products/indola-care.jpg", alt: "INDOLA Care" };
+  }
   if (has(brand, "L'Oréal") && has(combined, "Dia Light")) {
     return { src: "/assets/products/loreal-dia-light.jpg", alt: "L'Oréal Professionnel Dia Light" };
   }

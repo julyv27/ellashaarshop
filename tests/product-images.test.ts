@@ -39,5 +39,9 @@ describe("product images", () => {
     expect(productImage({ ...base, brand_name: "Wella", product_line_name: "Koleston Perfect", product_name: "Wella Koleston Perfect 7/0" })?.src).toBe("/assets/products/wella-koleston.webp");
     expect(productImage({ ...base, brand_name: "Wella", product_line_name: "Shinefinity", product_name: "Wella Shinefinity 07/0" })?.src).toBe("/assets/products/wella-shinefinity.jpg");
     expect(productImage({ ...base, brand_name: "Wella", product_line_name: "Color Touch Plus", product_name: "Wella Color Touch Plus 77/07" })?.src).toBe("/assets/products/wella-color-touch.jpg");
+    expect(productImage({ ...base, brand_name: "INDOLA", product_line_name: "Blonde Expert", product_name: "INDOLA Blonde Expert Insta Cool Shampoo" })?.src).toBe("/assets/products/indola-blonde-expert-care.jpg");
+    expect(productImage({ ...base, brand_name: "INDOLA", product_line_name: "Care", product_name: "INDOLA Care Color Shampoo" })?.src).toBe("/assets/products/indola-care.jpg");
+    expect(productImage({ ...base, brand_name: "INDOLA", product_line_name: "Care & Style", product_name: "INDOLA Care & Style Hair Spray" })?.src).toBe("/assets/products/indola-care-style.webp");
+    expect(productImage({ ...base, brand_name: "INDOLA", product_line_name: "Color Style Mousse", product_name: "INDOLA Color Style Mousse" })?.src).toBe("/assets/products/indola-color-style-mousse.jpg");
   });
 });
