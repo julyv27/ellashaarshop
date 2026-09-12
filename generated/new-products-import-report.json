@@ -1,0 +1,30 @@
+{
+  "source": [
+    "/Users/julia/Downloads/Nieuwe_producten_omvorming_en_styling.xlsx",
+    "/Users/julia/Downloads/La_Riche_Directions_actuele_kleuren.xlsx"
+  ],
+  "startCode": 1150,
+  "endCode": 1204,
+  "importedProducts": 55,
+  "rejectedRows": 0,
+  "byBrand": {
+    "Wella": 2,
+    "Schwarzkopf": 6,
+    "INDOLA": 1,
+    "La Riché": 46
+  },
+  "byCategory": {
+    "Omvorming": 8,
+    "Styling": 1,
+    "Kleur": 46
+  },
+  "byProductType": {
+    "Permanentlotion": 5,
+    "Permanent ontkrullen": 2,
+    "Neutralisatie / fixatie": 1,
+    "Mousse": 1,
+    "Semi-permanente haarkleuring": 46
+  },
+  "possibleDuplicates": [],
+  "rejected": []
+}
