@@ -73,6 +73,8 @@ OLAPLEX-producten en Schwarzkopf Blonde Me waterstofperoxide-producten zijn toeg
 
 Wella Koleston Perfect 9/71 is toegevoegd als `EH-1274`.
 
+INDOLA Color Style Mousse-kleuren zijn toegevoegd als losse producten `EH-1275` t/m `EH-1288`; het oude verzamelproduct `EH-1006` is gedeactiveerd. Schwarzkopf Creative Gel 50 ml is toegevoegd als `EH-1289`; Schwarzkopf OSiS+ Glow Frizz Control 50 ml is toegevoegd als `EH-1290`.
+
 ## Nieuwe allowed e-mailadressen
 
 Voeg het e-mailadres toe aan:

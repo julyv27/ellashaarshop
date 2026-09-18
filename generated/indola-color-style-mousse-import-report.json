@@ -1,0 +1,35 @@
+{
+  "source": "/Users/julia/Downloads/INDOLA_Color_Style_Mousse_actuele_kleuren.xlsx",
+  "startCode": 1275,
+  "endCode": 1288,
+  "importedProducts": 14,
+  "deactivatedProduct": "EH-1006",
+  "addedStandaloneProducts": [
+    {
+      "internalProductCode": "EH-1289",
+      "brand": "Schwarzkopf",
+      "productName": "Schwarzkopf Creative Gel",
+      "contentValue": "50",
+      "contentUnit": "ml"
+    },
+    {
+      "internalProductCode": "EH-1290",
+      "brand": "Schwarzkopf",
+      "productLine": "OSiS+",
+      "productName": "Schwarzkopf OSiS+ Glow Frizz Control",
+      "contentValue": "50",
+      "contentUnit": "ml"
+    }
+  ],
+  "rejectedRows": 0,
+  "byBrand": {
+    "INDOLA": 14
+  },
+  "byCategory": {
+    "Styling": 14
+  },
+  "byProductType": {
+    "Mousse": 14
+  },
+  "rejected": []
+}
