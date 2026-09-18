@@ -27,6 +27,8 @@ De app draait lokaal via Wrangler Pages Dev. Zet voor lokale ontwikkeling variab
 npm run import:catalog     # Excel-bronbestand valideren en seed SQL genereren
 npm run import:salon-products -- "/pad/naar/bestand.xlsx" 970
 npm run import:new-products -- 1150 "/pad/naar/permanent- en ontkrulbehandelingen.xlsx" "/pad/naar/la-riche.xlsx"
+npm run import:color-fresh-mask -- "/pad/naar/wella-color-fresh-mask.xlsx" 1205
+npm run import:olaplex-products -- "/pad/naar/olaplex.xlsx" 1225
 npm run db:local:apply     # migrations + gegenereerde seed toepassen op lokale D1
 npm run test               # unit/integratietests
 npm run build              # frontend build
@@ -60,6 +62,14 @@ npx wrangler d1 execute ellashaarshop-db --remote --file=./generated/catalog-see
 Aanvullende salonproducten uit `Salon_producten_fotos_aparte_ml_varianten (1).xlsx` zijn geïmporteerd als `EH-0970` t/m `EH-1149`. De import normaliseert `Schwarzkopf Professional` naar `Schwarzkopf` en `Wella Professionals` naar `Wella`, en laat leverancier/EAN/leveranciersartikelnummer leeg wanneer die niet in het bestand staan.
 
 Nieuwe permanent- en ontkrulbehandelingen/styling en La Riché Directions-producten zijn geïmporteerd als `EH-1150` t/m `EH-1204`. `La Riche` wordt als merk `La Riché` opgeslagen.
+
+Wella Color Fresh Mask-producten zijn geïmporteerd als `EH-1205` t/m `EH-1218`.
+
+Deluxe Tone On Tone Developer 1 Doos is toegevoegd als `EH-1219`.
+
+Wella Ocean Spritz en Wella waterstofperoxide-producten zijn toegevoegd als `EH-1220` t/m `EH-1224`.
+
+OLAPLEX-producten en Schwarzkopf Blonde Me waterstofperoxide-producten zijn toegevoegd als `EH-1225` t/m `EH-1273`.
 
 ## Nieuwe allowed e-mailadressen
 

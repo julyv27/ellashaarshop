@@ -1,0 +1,31 @@
+{
+  "source": "/Users/julia/Downloads/OLAPLEX_actuele_producten_met_afbeeldingsbronnen.xlsx",
+  "startCode": 1225,
+  "endCode": 1273,
+  "importedProducts": 49,
+  "olaplexProducts": 46,
+  "blondeMeProducts": 3,
+  "rejectedRows": 0,
+  "byBrand": {
+    "OLAPLEX": 46,
+    "Schwarzkopf": 3
+  },
+  "byCategory": {
+    "Haarverzorging": 44,
+    "Styling": 2,
+    "Kleur": 3
+  },
+  "byProductType": {
+    "Treatment": 6,
+    "Shampoo": 14,
+    "Conditioner": 14,
+    "Droogshampoo": 2,
+    "Leave-in": 1,
+    "Haarolie / serum": 5,
+    "Gel": 1,
+    "Styling spray": 1,
+    "Haarmasker": 2,
+    "Waterstofperoxide": 3
+  },
+  "rejected": []
+}

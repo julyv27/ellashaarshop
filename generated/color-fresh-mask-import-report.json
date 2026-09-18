@@ -1,0 +1,17 @@
+{
+  "source": "/Users/julia/Downloads/Wella_Color_Fresh_Mask_actuele_producten_met_afbeeldingsbronnen.xlsx",
+  "startCode": 1205,
+  "endCode": 1218,
+  "importedProducts": 14,
+  "rejectedRows": 0,
+  "byBrand": {
+    "Wella": 14
+  },
+  "byCategory": {
+    "Haarverzorging": 14
+  },
+  "byProductType": {
+    "Haarmasker": 14
+  },
+  "rejected": []
+}
