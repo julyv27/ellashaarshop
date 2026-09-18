@@ -40,13 +40,6 @@ SET
   updated_at = datetime('now')
 WHERE internal_product_code = 'EH-1006';
 
-DELETE FROM products_fts
-WHERE rowid IN (
-  SELECT id
-  FROM products
-  WHERE internal_product_code = 'EH-1006'
-);
-
 INSERT INTO products (
   internal_product_code,
   brand_id,
