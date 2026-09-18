@@ -71,6 +71,8 @@ Wella Ocean Spritz en Wella waterstofperoxide-producten zijn toegevoegd als `EH-
 
 OLAPLEX-producten en Schwarzkopf Blonde Me waterstofperoxide-producten zijn toegevoegd als `EH-1225` t/m `EH-1273`.
 
+Wella Koleston Perfect 9/71 is toegevoegd als `EH-1274`.
+
 ## Nieuwe allowed e-mailadressen
 
 Voeg het e-mailadres toe aan:
