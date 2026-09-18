@@ -40,6 +40,23 @@ SET
   updated_at = datetime('now')
 WHERE internal_product_code = 'EH-1006';
 
+WITH new_products(product_code, product_name, shade_code, supplier_sku) AS (
+  VALUES
+    ('EH-1275', 'INDOLA Color Style Mousse Anthracite', 'Anthracite', '3055213'),
+    ('EH-1276', 'INDOLA Color Style Mousse Beige Blonde', 'Beige Blonde', '3055199'),
+    ('EH-1277', 'INDOLA Color Style Mousse Copper', 'Copper', '3055195'),
+    ('EH-1278', 'INDOLA Color Style Mousse Dark Ash', 'Dark Ash', '3055215'),
+    ('EH-1279', 'INDOLA Color Style Mousse Dark Blonde', 'Dark Blonde', '3054256'),
+    ('EH-1280', 'INDOLA Color Style Mousse Honey Blonde', 'Honey Blonde', '3054239'),
+    ('EH-1281', 'INDOLA Color Style Mousse Light Brown Hazel', 'Light Brown Hazel', '3055198'),
+    ('EH-1282', 'INDOLA Color Style Mousse Medium Blonde', 'Medium Blonde', '3054255'),
+    ('EH-1283', 'INDOLA Color Style Mousse Medium Brown', 'Medium Brown', '3055196'),
+    ('EH-1284', 'INDOLA Color Style Mousse Pearl Grey', 'Pearl Grey', '3054254'),
+    ('EH-1285', 'INDOLA Color Style Mousse Red', 'Red', '3054252'),
+    ('EH-1286', 'INDOLA Color Style Mousse Silver', 'Silver', '3054253'),
+    ('EH-1287', 'INDOLA Color Style Mousse Silver Lavender', 'Silver Lavender', '3054257'),
+    ('EH-1288', 'INDOLA Color Style Mousse Strawberry Rosé', 'Strawberry Rosé', '3055194')
+)
 INSERT INTO products (
   internal_product_code,
   brand_id,
@@ -75,35 +92,7 @@ SELECT
   NULL,
   1,
   LOWER(new_products.product_code || ' indola color style mousse styling mousse tijdelijke haarkleuring stylingmousse ' || new_products.product_name || ' ' || new_products.shade_code || ' 200 ml')
-FROM (
-  SELECT 'EH-1275' AS product_code, 'INDOLA Color Style Mousse Anthracite' AS product_name, 'Anthracite' AS shade_code, '3055213' AS supplier_sku
-  UNION ALL
-  SELECT 'EH-1276', 'INDOLA Color Style Mousse Beige Blonde', 'Beige Blonde', '3055199'
-  UNION ALL
-  SELECT 'EH-1277', 'INDOLA Color Style Mousse Copper', 'Copper', '3055195'
-  UNION ALL
-  SELECT 'EH-1278', 'INDOLA Color Style Mousse Dark Ash', 'Dark Ash', '3055215'
-  UNION ALL
-  SELECT 'EH-1279', 'INDOLA Color Style Mousse Dark Blonde', 'Dark Blonde', '3054256'
-  UNION ALL
-  SELECT 'EH-1280', 'INDOLA Color Style Mousse Honey Blonde', 'Honey Blonde', '3054239'
-  UNION ALL
-  SELECT 'EH-1281', 'INDOLA Color Style Mousse Light Brown Hazel', 'Light Brown Hazel', '3055198'
-  UNION ALL
-  SELECT 'EH-1282', 'INDOLA Color Style Mousse Medium Blonde', 'Medium Blonde', '3054255'
-  UNION ALL
-  SELECT 'EH-1283', 'INDOLA Color Style Mousse Medium Brown', 'Medium Brown', '3055196'
-  UNION ALL
-  SELECT 'EH-1284', 'INDOLA Color Style Mousse Pearl Grey', 'Pearl Grey', '3054254'
-  UNION ALL
-  SELECT 'EH-1285', 'INDOLA Color Style Mousse Red', 'Red', '3054252'
-  UNION ALL
-  SELECT 'EH-1286', 'INDOLA Color Style Mousse Silver', 'Silver', '3054253'
-  UNION ALL
-  SELECT 'EH-1287', 'INDOLA Color Style Mousse Silver Lavender', 'Silver Lavender', '3054257'
-  UNION ALL
-  SELECT 'EH-1288', 'INDOLA Color Style Mousse Strawberry Rosé', 'Strawberry Rosé', '3055194'
-) new_products
+FROM new_products
 JOIN brands b ON b.name = 'INDOLA'
 JOIN categories c ON c.name = 'Styling'
 JOIN product_types pt ON pt.category_id = c.id AND pt.name = 'Mousse'
