@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import type { Product } from "../src/shared/types";
 import { productImage } from "../src/ui/productImages";
@@ -55,5 +56,46 @@ describe("product images", () => {
     expect(productImage({ ...base, product_line_name: "Natural Styling Hydrowave Glamour Wave", product_name: "Schwarzkopf Natural Styling Hydrowave Glamour Wave Glamour Wave Perm Lotion 1", shade_code: "1" })?.src).toBe("/assets/products/schwarzkopf-glamour-wave-1.jpg");
     expect(productImage({ ...base, product_line_name: "Natural Styling Hydrowave Glamour Wave", product_name: "Schwarzkopf Natural Styling Hydrowave Glamour Wave Glamour Wave Perm Lotion 2", shade_code: "2" })?.src).toBe("/assets/products/schwarzkopf-glamour-wave-2.jpg");
     expect(productImage({ ...base, brand_name: "La Riché", product_line_name: "Directions", product_name: "La Riché Directions Alpine Green", shade_code: "Alpine Green" })?.src).toBe("/assets/products/la-riche-directions.jpg");
+  });
+
+  it("maps every Schwarzkopf Bonacure product to a product-specific image", () => {
+    const mappings = [
+      ["EH-1051", "Clean Balance Deep Cleansing Shampoo", "250", "/assets/products/schwarzkopf-bonacure-clean-balance-shampoo-250ml.png"],
+      ["EH-1052", "Clean Balance Deep Cleansing Shampoo", "1000", "/assets/products/schwarzkopf-bonacure-clean-balance-shampoo-1000ml.png"],
+      ["EH-1053", "Color Freeze Conditioner pH 4.5", "200", "/assets/products/schwarzkopf-bonacure-color-freeze-conditioner-200ml.png"],
+      ["EH-1054", "Color Freeze Conditioner pH 4.5", "1000", "/assets/products/schwarzkopf-bonacure-color-freeze-conditioner-1000ml.jpg"],
+      ["EH-1055", "Color Freeze Shampoo pH 4.5", "250", "/assets/products/schwarzkopf-bonacure-color-freeze-shampoo-250ml.png"],
+      ["EH-1056", "Color Freeze Shampoo pH 4.5", "1000", "/assets/products/schwarzkopf-bonacure-color-freeze-shampoo-1000ml.jpg"],
+      ["EH-1057", "Color Freeze Treatment pH 4.5", "200", "/assets/products/schwarzkopf-bonacure-color-freeze-treatment-200ml.jpg"],
+      ["EH-1058", "Color Freeze Treatment pH 4.5", "500", "/assets/products/schwarzkopf-bonacure-color-freeze-treatment-500ml.jpg"],
+      ["EH-1059", "Frizz Away Conditioner", "200", "/assets/products/schwarzkopf-bonacure-frizz-away-conditioner-200ml.jpg"],
+      ["EH-1060", "Frizz Away Conditioner", "1000", "/assets/products/schwarzkopf-bonacure-frizz-away-conditioner-1000ml.webp"],
+      ["EH-1061", "Frizz Away Shampoo", "250", "/assets/products/schwarzkopf-bonacure-frizz-away-shampoo-250ml.jpg"],
+      ["EH-1062", "Frizz Away Shampoo", "1000", "/assets/products/schwarzkopf-bonacure-frizz-away-shampoo-1000ml.png"],
+      ["EH-1063", "Moisture Kick Shampoo", "250", "/assets/products/schwarzkopf-bonacure-moisture-kick-shampoo-250ml.jpg"],
+      ["EH-1064", "Moisture Kick Shampoo", "1000", "/assets/products/schwarzkopf-bonacure-moisture-kick-shampoo-1000ml.jpg"],
+      ["EH-1065", "Moisture Kick Spray Conditioner", "200", "/assets/products/schwarzkopf-bonacure-moisture-kick-spray-conditioner-200ml.jpg"],
+      ["EH-1066", "Repair Rescue Sealed Ends+", "100", "/assets/products/schwarzkopf-bonacure-repair-rescue-sealed-ends-100ml.jpg"],
+      ["EH-1067", "Repair Rescue Shampoo", "250", "/assets/products/schwarzkopf-bonacure-repair-rescue-shampoo-250ml.jpg"],
+      ["EH-1068", "Repair Rescue Shampoo", "1000", "/assets/products/schwarzkopf-bonacure-repair-rescue-shampoo-1000ml.jpg"],
+      ["EH-1069", "Repair Rescue Spray Conditioner", "200", "/assets/products/schwarzkopf-bonacure-repair-rescue-spray-conditioner-200ml.jpg"],
+      ["EH-1070", "Repair Rescue Treatment", "200", "/assets/products/schwarzkopf-bonacure-repair-rescue-treatment-200ml.jpg"],
+      ["EH-1071", "Repair Rescue Treatment", "500", "/assets/products/schwarzkopf-bonacure-repair-rescue-treatment-500ml.jpg"],
+      ["EH-1072", "Volume Boost Shampoo", "250", "/assets/products/schwarzkopf-bonacure-volume-boost-shampoo-250ml.png"],
+      ["EH-1073", "Volume Boost Shampoo", "1000", "/assets/products/schwarzkopf-bonacure-volume-boost-shampoo-1000ml.png"]
+    ] as const;
+
+    for (const [code, name, content, src] of mappings) {
+      expect(productImage({
+        ...base,
+        internal_product_code: code,
+        brand_name: "Schwarzkopf",
+        product_line_name: `Bonacure ${name.split(" ")[0]}`,
+        product_name: `Schwarzkopf Bonacure ${name}`,
+        content_value: content,
+        content_unit: "ml"
+      })?.src).toBe(src);
+      expect(fs.existsSync(`public${src}`)).toBe(true);
+    }
   });
 });
