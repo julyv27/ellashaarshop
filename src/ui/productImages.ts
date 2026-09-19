@@ -54,6 +54,9 @@ export function productImage(product: Product): ProductImage | null {
   if (has(brand, "Schwarzkopf") && has(combined, "Igora")) {
     return { src: "/assets/products/schwarzkopf-igora-royal.webp", alt: "Schwarzkopf Igora Royal" };
   }
+  if (has(brand, "Schwarzkopf") && has(combined, "Blonde Me") && product.content_value === "1000" && product.content_unit === "ml") {
+    return { src: "/assets/products/schwarzkopf-blonde-me-developer-1000ml.png", alt: "Schwarzkopf Blonde Me Premium Developer 1000 ml" };
+  }
   if (has(brand, "KIS") && has(combined, "KeraCream")) {
     return { src: "/assets/products/kis-keracream.webp", alt: "KIS KeraCream Color" };
   }
@@ -77,6 +80,9 @@ export function productImage(product: Product): ProductImage | null {
   }
   if (has(brand, "L'Oréal") && has(combined, "Majirel")) {
     return { src: "/assets/products/loreal-majirel.jpg", alt: "L'Oréal Professionnel Majirel" };
+  }
+  if (has(brand, "L'Oréal") && has(combined, "iNOA")) {
+    return { src: "/assets/products/loreal-inoa.webp", alt: "L'Oréal Professionnel iNOA" };
   }
   if (has(brand, "Wella") && has(combined, "Koleston")) {
     return { src: "/assets/products/wella-koleston.webp", alt: "Wella Koleston Perfect" };

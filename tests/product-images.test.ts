@@ -33,8 +33,11 @@ describe("product images", () => {
     expect(productImage({ ...base, brand_name: "INDOLA", product_line_name: "PCC", product_name: "INDOLA PCC 7.0" })?.src).toBe("/assets/products/indola-pcc.webp");
     expect(productImage({ ...base, brand_name: "L'Oréal Professionnel", product_line_name: "Dia Light", product_name: "L'Oréal Professionnel Dia Light 7.01" })?.src).toBe("/assets/products/loreal-dia-light.jpg");
     expect(productImage({ ...base, brand_name: "L'Oréal Professionnel", product_line_name: "Majirel", product_name: "L'Oréal Professionnel Majirel 7.0" })?.src).toBe("/assets/products/loreal-majirel.jpg");
+    expect(productImage({ ...base, brand_name: "L'Oréal Professionnel", product_line_name: "iNOA", product_name: "L'Oréal Professionnel iNOA 7.0" })?.src).toBe("/assets/products/loreal-inoa.webp");
     expect(productImage({ ...base, brand_name: "INDOLA", product_line_name: "Blonde Expert", product_name: "INDOLA Blonde Expert Highlift +Blend" })?.src).toBe("/assets/products/indola-highlift.webp");
     expect(productImage({ ...base, product_line_name: "IGORA VIBRANCE", product_name: "Schwarzkopf Igora Vibrance 7-0" })?.src).toBe("/assets/products/schwarzkopf-igora-vibrance.webp");
+    expect(productImage({ ...base, brand_name: "Schwarzkopf", product_line_name: "Blonde Me", product_name: "Schwarzkopf Blonde Me 6%", content_value: "1000", content_unit: "ml" })?.src).toBe("/assets/products/schwarzkopf-blonde-me-developer-1000ml.png");
+    expect(productImage({ ...base, brand_name: "Schwarzkopf", product_line_name: "Blonde Me", product_name: "Schwarzkopf Blonde Me 6%", content_value: "60", content_unit: "ml" })).toBeNull();
     expect(productImage({ ...base, brand_name: "KIS", product_line_name: "KeraCream Color", product_name: "KIS KeraCream Color 7N" })?.src).toBe("/assets/products/kis-keracream.webp");
     expect(productImage({ ...base, brand_name: "Wella", product_line_name: "Koleston Perfect", product_name: "Wella Koleston Perfect 7/0" })?.src).toBe("/assets/products/wella-koleston.webp");
     expect(productImage({ ...base, brand_name: "Wella", product_line_name: "Shinefinity", product_name: "Wella Shinefinity 07/0" })?.src).toBe("/assets/products/wella-shinefinity.jpg");
