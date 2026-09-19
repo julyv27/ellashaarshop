@@ -98,4 +98,21 @@ describe("product images", () => {
       expect(fs.existsSync(`public${src}`)).toBe(true);
     }
   });
+
+  it("maps the developer box and every OLAPLEX product to an existing image", () => {
+    const codes = ["EH-1219", ...Array.from({ length: 46 }, (_, index) => `EH-${1225 + index}`)];
+
+    for (const code of codes) {
+      const image = productImage({
+        ...base,
+        internal_product_code: code,
+        brand_name: code === "EH-1219" ? "3DeLuXe" : "OLAPLEX",
+        product_line_name: code === "EH-1219" ? null : "OLAPLEX",
+        product_name: code === "EH-1219" ? "Tone On Tone Developer 1 Doos" : "OLAPLEX product"
+      });
+
+      expect(image?.src).toBeTruthy();
+      expect(fs.existsSync(`public${image?.src}`)).toBe(true);
+    }
+  });
 });

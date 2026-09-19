@@ -9,6 +9,56 @@ function has(value: string, needle: string) {
   return value.toLowerCase().includes(needle.toLowerCase());
 }
 
+const exactProductImages: Record<string, ProductImage> = {
+  "EH-1219": { src: "/assets/products/deluxe-tone-on-tone-developer-box.png", alt: "3DeLuXe Tone On Tone Developer 1 Doos" },
+  "EH-1225": { src: "/assets/products/olaplex-eh-1225-no0-155ml.png", alt: "OLAPLEX Nº.0 Intensive Bond Building Treatment 155 ml" },
+  "EH-1226": { src: "/assets/products/olaplex-eh-1226-no3plus-100ml.png", alt: "OLAPLEX Nº.3PLUS Complete Repair Treatment 100 ml" },
+  "EH-1227": { src: "/assets/products/olaplex-eh-1227-no3plus-250ml.png", alt: "OLAPLEX Nº.3PLUS Complete Repair Treatment 250 ml" },
+  "EH-1228": { src: "/assets/products/olaplex-eh-1228-no4-shampoo-100ml.jpg", alt: "OLAPLEX Nº.4 Bond Maintenance Shampoo 100 ml" },
+  "EH-1229": { src: "/assets/products/olaplex-eh-1229-no4-shampoo-250ml.jpg", alt: "OLAPLEX Nº.4 Bond Maintenance Shampoo 250 ml" },
+  "EH-1230": { src: "/assets/products/olaplex-eh-1230-no4-shampoo-1000ml.jpg", alt: "OLAPLEX Nº.4 Bond Maintenance Shampoo 1000 ml" },
+  "EH-1231": { src: "/assets/products/olaplex-eh-1231-no5-conditioner-100ml.jpg", alt: "OLAPLEX Nº.5 Bond Maintenance Conditioner 100 ml" },
+  "EH-1232": { src: "/assets/products/olaplex-eh-1232-no5-conditioner-250ml.png", alt: "OLAPLEX Nº.5 Bond Maintenance Conditioner 250 ml" },
+  "EH-1233": { src: "/assets/products/olaplex-eh-1233-no5-conditioner-1000ml.jpg", alt: "OLAPLEX Nº.5 Bond Maintenance Conditioner 1000 ml" },
+  "EH-1234": { src: "/assets/products/olaplex-eh-1234-no4c-shampoo-250ml.png", alt: "OLAPLEX Nº.4C Bond Maintenance Clarifying Shampoo 250 ml" },
+  "EH-1235": { src: "/assets/products/olaplex-eh-1235-no4c-shampoo-1000ml.webp", alt: "OLAPLEX Nº.4C Bond Maintenance Clarifying Shampoo 1000 ml" },
+  "EH-1236": { src: "/assets/products/olaplex-eh-1236-no4d-dry-shampoo-50ml.png", alt: "OLAPLEX Nº.4D Clean Volume Detox Dry Shampoo 50 ml" },
+  "EH-1237": { src: "/assets/products/olaplex-eh-1237-no4d-dry-shampoo-250ml.jpg", alt: "OLAPLEX Nº.4D Clean Volume Detox Dry Shampoo 250 ml" },
+  "EH-1238": { src: "/assets/products/olaplex-eh-1238-no4p-shampoo-250ml.jpg", alt: "OLAPLEX Nº.4P Blonde Enhancer Toning Shampoo 250 ml" },
+  "EH-1239": { src: "/assets/products/olaplex-eh-1239-no4p-shampoo-1000ml.png", alt: "OLAPLEX Nº.4P Blonde Enhancer Toning Shampoo 1000 ml" },
+  "EH-1240": { src: "/assets/products/olaplex-eh-1240-no5p-conditioner-250ml.png", alt: "OLAPLEX Nº.5P Blonde Enhancer Toning Conditioner 250 ml" },
+  "EH-1241": { src: "/assets/products/olaplex-eh-1241-no5p-conditioner-1000ml.jpg", alt: "OLAPLEX Nº.5P Blonde Enhancer Toning Conditioner 1000 ml" },
+  "EH-1242": { src: "/assets/products/olaplex-eh-1242-no4fine-shampoo-100ml.png", alt: "OLAPLEX Nº.4FINE Bond Maintenance Volumizing Shampoo 100 ml" },
+  "EH-1243": { src: "/assets/products/olaplex-eh-1243-no4fine-shampoo-250ml.png", alt: "OLAPLEX Nº.4FINE Bond Maintenance Volumizing Shampoo 250 ml" },
+  "EH-1244": { src: "/assets/products/olaplex-eh-1244-no4fine-shampoo-525ml.png", alt: "OLAPLEX Nº.4FINE Bond Maintenance Volumizing Shampoo 525 ml" },
+  "EH-1245": { src: "/assets/products/olaplex-eh-1245-no4fine-shampoo-1000ml.png", alt: "OLAPLEX Nº.4FINE Bond Maintenance Volumizing Shampoo 1000 ml" },
+  "EH-1246": { src: "/assets/products/olaplex-eh-1246-no5fine-conditioner-100ml.png", alt: "OLAPLEX Nº.5FINE Bond Maintenance Volumizing Conditioner 100 ml" },
+  "EH-1247": { src: "/assets/products/olaplex-eh-1247-no5fine-conditioner-250ml.png", alt: "OLAPLEX Nº.5FINE Bond Maintenance Volumizing Conditioner 250 ml" },
+  "EH-1248": { src: "/assets/products/olaplex-eh-1248-no5fine-conditioner-525ml.png", alt: "OLAPLEX Nº.5FINE Bond Maintenance Volumizing Conditioner 525 ml" },
+  "EH-1249": { src: "/assets/products/olaplex-eh-1249-no5fine-conditioner-1000ml.png", alt: "OLAPLEX Nº.5FINE Bond Maintenance Volumizing Conditioner 1000 ml" },
+  "EH-1250": { src: "/assets/products/olaplex-eh-1250-no4curl-shampoo-100ml.png", alt: "OLAPLEX Nº.4CURL Bond Shaper Hydrating Curl Shampoo 100 ml" },
+  "EH-1251": { src: "/assets/products/olaplex-eh-1251-no4curl-shampoo-250ml.png", alt: "OLAPLEX Nº.4CURL Bond Shaper Hydrating Curl Shampoo 250 ml" },
+  "EH-1252": { src: "/assets/products/olaplex-eh-1252-no4curl-shampoo-1000ml.png", alt: "OLAPLEX Nº.4CURL Bond Shaper Hydrating Curl Shampoo 1000 ml" },
+  "EH-1253": { src: "/assets/products/olaplex-eh-1253-no5curl-conditioner-100ml.png", alt: "OLAPLEX Nº.5CURL Bond Shaper Hydrating Curl Conditioner 100 ml" },
+  "EH-1254": { src: "/assets/products/olaplex-eh-1254-no5curl-conditioner-250ml.png", alt: "OLAPLEX Nº.5CURL Bond Shaper Hydrating Curl Conditioner 250 ml" },
+  "EH-1255": { src: "/assets/products/olaplex-eh-1255-no5curl-conditioner-1000ml.jpg", alt: "OLAPLEX Nº.5CURL Bond Shaper Hydrating Curl Conditioner 1000 ml" },
+  "EH-1256": { src: "/assets/products/olaplex-eh-1256-no5-leave-in-30ml.jpg", alt: "OLAPLEX Nº.5 Leave-In Moisturize & Mend Conditioner 30 ml" },
+  "EH-1257": { src: "/assets/products/olaplex-eh-1257-no5-leave-in-100ml.jpg", alt: "OLAPLEX Nº.5 Leave-In Moisturize & Mend Conditioner 100 ml" },
+  "EH-1258": { src: "/assets/products/olaplex-eh-1258-no6-bond-smoother-100ml.png", alt: "OLAPLEX Nº.6 Bond Smoother 100 ml" },
+  "EH-1259": { src: "/assets/products/olaplex-eh-1259-no7-bonding-oil-30ml.png", alt: "OLAPLEX Nº.7 Bonding Oil 30 ml" },
+  "EH-1260": { src: "/assets/products/olaplex-eh-1260-no7-bonding-oil-60ml.png", alt: "OLAPLEX Nº.7 Bonding Oil 60 ml" },
+  "EH-1261": { src: "/assets/products/olaplex-eh-1261-no7-shine-serum-oil-mist-80ml.jpg", alt: "OLAPLEX Nº.7 Shine Serum Oil Mist 80 ml" },
+  "EH-1262": { src: "/assets/products/olaplex-eh-1262-no9-serum-90ml.png", alt: "OLAPLEX Nº.9 Bond Protector Nourishing Hair Serum 90 ml" },
+  "EH-1263": { src: "/assets/products/olaplex-eh-1263-no10-gel-200ml.png", alt: "OLAPLEX Nº.10 Bond Shaper Curl Defining Gel 200 ml" },
+  "EH-1264": { src: "/assets/products/olaplex-eh-1264-volumizing-blow-dry-mist-150ml.png", alt: "OLAPLEX Volumizing Blow Dry Mist 150 ml" },
+  "EH-1265": { src: "/assets/products/olaplex-eh-1265-scalp-longevity-treatment-50ml.png", alt: "OLAPLEX Scalp Longevity Treatment 50 ml" },
+  "EH-1266": { src: "/assets/products/olaplex-eh-1266-rich-hydration-mask-200ml.png", alt: "OLAPLEX Rich Hydration Mask 200 ml" },
+  "EH-1267": { src: "/assets/products/olaplex-eh-1267-weightless-nourishing-mask-200ml.png", alt: "OLAPLEX Weightless Nourishing Mask 200 ml" },
+  "EH-1268": { src: "/assets/products/olaplex-eh-1268-no1-bond-multiplier-525ml.jpg", alt: "OLAPLEX Nº.1 Bond Multiplier 525 ml" },
+  "EH-1269": { src: "/assets/products/olaplex-eh-1269-no2-bond-perfector-525ml.jpg", alt: "OLAPLEX Nº.2 Bond Perfector 525 ml" },
+  "EH-1270": { src: "/assets/products/olaplex-eh-1270-no2-bond-perfector-backbar-2000ml.png", alt: "OLAPLEX Nº.2 Bond Perfector Backbar 2000 ml" }
+};
+
 const bonacureImages: Record<string, ProductImage> = {
   "EH-1051": { src: "/assets/products/schwarzkopf-bonacure-clean-balance-shampoo-250ml.png", alt: "Schwarzkopf Bonacure Clean Balance Deep Cleansing Shampoo 250 ml" },
   "EH-1052": { src: "/assets/products/schwarzkopf-bonacure-clean-balance-shampoo-1000ml.png", alt: "Schwarzkopf Bonacure Clean Balance Deep Cleansing Shampoo 1000 ml" },
@@ -40,6 +90,10 @@ export function productImage(product: Product): ProductImage | null {
   const line = product.product_line_name ?? "";
   const name = product.product_name;
   const combined = `${line} ${name}`;
+
+  if (exactProductImages[product.internal_product_code]) {
+    return exactProductImages[product.internal_product_code];
+  }
 
   if (bonacureImages[product.internal_product_code]) {
     return bonacureImages[product.internal_product_code];
