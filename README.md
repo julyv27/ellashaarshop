@@ -75,6 +75,14 @@ Wella Koleston Perfect 9/71 is toegevoegd als `EH-1274`.
 
 INDOLA Color Style Mousse-kleuren zijn toegevoegd als losse producten `EH-1275` t/m `EH-1288`; het oude verzamelproduct `EH-1006` is gedeactiveerd. Schwarzkopf Creative Gel 50 ml is toegevoegd als `EH-1289`; Schwarzkopf OSiS+ Glow Frizz Control 50 ml is toegevoegd als `EH-1290`.
 
+Schwarzkopf Natural Styling Hydrowave Neutraliser Fixing Lotion `0/1` is gesplitst: `EH-1154` is variant `0`, en varianten `1` en `2` zijn toegevoegd als `EH-1291` en `EH-1292`.
+
+Nieuwe producten uit `Nieuwe_database_producten_met_DELUXE_Bleach.xlsx` zijn toegevoegd als `EH-1293` t/m `EH-1304`, inclusief DELUXE Deluxe Bleach.
+
+Schwarzkopf Silhouette Super Hold Hairspray en Flexible Hold Hairspray, beide 300 ml, zijn toegevoegd als `EH-1305` en `EH-1306`.
+
+Producten uit `Nieuwe_database_producten_Totex_KIS_Fanola.xlsx` zijn toegevoegd als `EH-1307` t/m `EH-1310`.
+
 ## Nieuwe allowed e-mailadressen
 
 Voeg het e-mailadres toe aan:
