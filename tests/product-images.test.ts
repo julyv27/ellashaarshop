@@ -117,4 +117,68 @@ describe("product images", () => {
       expect(fs.existsSync(`public${image?.src}`)).toBe(true);
     }
   });
+
+  it("maps the newly supplied salon product photos", () => {
+    const mappings = [
+      {
+        product: {
+          ...base,
+          internal_product_code: "EH-1306",
+          brand_name: "Schwarzkopf",
+          product_line_name: "Silhouette",
+          product_name: "Schwarzkopf Silhouette Flexible Hold Hairspray",
+          content_value: "300"
+        },
+        src: "/assets/products/schwarzkopf-silhouette-flexible-hold-hairspray.jpg"
+      },
+      {
+        product: {
+          ...base,
+          internal_product_code: "EH-9998",
+          brand_name: "Schwarzkopf",
+          product_line_name: "Silhouette",
+          product_name: "Schwarzkopf Silhouette Flexible Hold Hairspray",
+          content_value: "500"
+        },
+        src: "/assets/products/schwarzkopf-silhouette-flexible-hold-hairspray.jpg"
+      },
+      {
+        product: {
+          ...base,
+          internal_product_code: "EH-9999",
+          brand_name: "Schwarzkopf",
+          product_line_name: "Silhouette",
+          product_name: "Schwarzkopf Silhouette Flexible Hold Mousse"
+        },
+        src: "/assets/products/schwarzkopf-silhouette-flexible-hold-mousse.avif"
+      },
+      {
+        product: {
+          ...base,
+          internal_product_code: "EH-1309",
+          brand_name: "Fanola",
+          product_line_name: "No Yellow",
+          product_name: "Fanola No Yellow No Yellow Shampoo",
+          content_value: "350"
+        },
+        src: "/assets/products/fanola-no-yellow-shampoo.jpg"
+      },
+      {
+        product: {
+          ...base,
+          internal_product_code: "EH-1310",
+          brand_name: "Fanola",
+          product_line_name: "No Yellow",
+          product_name: "Fanola No Yellow No Yellow Shampoo",
+          content_value: "1000"
+        },
+        src: "/assets/products/fanola-no-yellow-shampoo.jpg"
+      }
+    ] as const;
+
+    for (const { product, src } of mappings) {
+      expect(productImage(product)?.src).toBe(src);
+      expect(fs.existsSync(`public${src}`)).toBe(true);
+    }
+  });
 });
