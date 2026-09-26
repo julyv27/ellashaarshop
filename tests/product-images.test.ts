@@ -23,6 +23,7 @@ const base: Product = {
   supplier_id: null,
   supplier_sku: null,
   barcode_gtin: null,
+  sale_price_cents: null,
   active: true,
   search_text: ""
 };
@@ -131,6 +132,39 @@ describe("product images", () => {
           content_unit: "g"
         },
         src: "/assets/products/deluxe-bleach-500g.webp"
+      },
+      {
+        product: {
+          ...base,
+          internal_product_code: "EH-1305",
+          brand_name: "Schwarzkopf",
+          product_line_name: "Silhouette",
+          product_name: "Schwarzkopf Silhouette Super Hold Hairspray",
+          content_value: "300"
+        },
+        src: "/assets/products/schwarzkopf-silhouette-super-hold-hairspray.webp"
+      },
+      {
+        product: {
+          ...base,
+          internal_product_code: "EH-1095",
+          brand_name: "Schwarzkopf",
+          product_line_name: "Silhouette",
+          product_name: "Schwarzkopf Silhouette Super Hold Hairspray",
+          content_value: "500"
+        },
+        src: "/assets/products/schwarzkopf-silhouette-super-hold-hairspray.webp"
+      },
+      {
+        product: {
+          ...base,
+          internal_product_code: "EH-1096",
+          brand_name: "Schwarzkopf",
+          product_line_name: "Silhouette",
+          product_name: "Schwarzkopf Silhouette Super Hold Mousse",
+          content_value: "200"
+        },
+        src: "/assets/products/schwarzkopf-silhouette-super-hold-mousse.webp"
       },
       {
         product: {

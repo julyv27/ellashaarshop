@@ -62,6 +62,7 @@ export interface Product {
   supplier_name?: string | null;
   supplier_sku: string | null;
   barcode_gtin: string | null;
+  sale_price_cents: number | null;
   active: boolean;
   search_text: string;
 }

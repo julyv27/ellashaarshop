@@ -184,6 +184,7 @@ function ProductsView(props: {
         {props.products.map((product) => {
           const quantity = props.cart[product.id]?.quantity ?? 0;
           const image = productImage(product);
+          const salePrice = salePriceLabel(product.sale_price_cents);
           return (
             <article className={product.active ? "product-card" : "product-card inactive"} key={product.id}>
               <header className="product-card-title">
@@ -197,6 +198,7 @@ function ProductsView(props: {
                 <div className="product-meta">
                   <p>{[product.variant_group, product.shade_code ? `Kleur ${product.shade_code}` : "", contentLabel(product)].filter(Boolean).join(" - ")}</p>
                   <small>{product.internal_product_code} - {product.product_type_name}</small>
+                  {salePrice && <span className="sale-price">Verkoopprijs {salePrice}</span>}
                 </div>
               </div>
               <Quantity value={quantity} onChange={(next) => props.changeQuantity(product, next)} />
@@ -213,6 +215,11 @@ function ProductsView(props: {
       )}
     </>
   );
+}
+
+function salePriceLabel(cents: number | null | undefined) {
+  if (cents == null) return "";
+  return new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(cents / 100);
 }
 
 function Quantity({ value, onChange }: { value: number; onChange: (value: number) => void }) {

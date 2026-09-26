@@ -23,6 +23,7 @@ const product: Product = {
   supplier_name: "Topline",
   supplier_sku: null,
   barcode_gtin: null,
+  sale_price_cents: 1665,
   active: true,
   search_text: "indola pcc natural indola pcc 7.0 7.0 verf"
 };

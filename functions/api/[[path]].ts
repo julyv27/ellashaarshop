@@ -86,6 +86,7 @@ SELECT
   s.name AS supplier_name,
   p.supplier_sku,
   p.barcode_gtin,
+  p.sale_price_cents,
   p.active,
   p.search_text,
   COALESCE(os.total_ordered, 0) AS total_ordered
@@ -261,6 +262,7 @@ const productInput = z.object({
   supplier_id: z.number().int().positive().nullable().optional(),
   supplier_sku: z.string().nullable().optional(),
   barcode_gtin: z.string().nullable().optional(),
+  sale_price_cents: z.number().int().nonnegative().nullable().optional(),
   active: z.boolean().default(true)
 });
 
@@ -306,9 +308,9 @@ async function createProduct(context: PagesContext) {
   const code = parsed.data.internal_product_code?.trim() || await nextProductCode(context.env.ELLAS_DB);
   const searchText = await productSearchText(context.env.ELLAS_DB, { ...parsed.data, internal_product_code: code });
   await context.env.ELLAS_DB.prepare(`
-    INSERT INTO products (internal_product_code, brand_id, product_line_id, category_id, product_type_id, variant_group, product_name, shade_code, content_value, content_unit, order_unit, supplier_id, supplier_sku, barcode_gtin, active, search_text)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `).bind(code, parsed.data.brand_id, parsed.data.product_line_id ?? null, parsed.data.category_id, parsed.data.product_type_id, nullable(parsed.data.variant_group), parsed.data.product_name, nullable(parsed.data.shade_code), nullable(parsed.data.content_value), nullable(parsed.data.content_unit), parsed.data.order_unit, parsed.data.supplier_id ?? null, nullable(parsed.data.supplier_sku), nullable(parsed.data.barcode_gtin), parsed.data.active ? 1 : 0, searchText).run();
+    INSERT INTO products (internal_product_code, brand_id, product_line_id, category_id, product_type_id, variant_group, product_name, shade_code, content_value, content_unit, order_unit, supplier_id, supplier_sku, barcode_gtin, sale_price_cents, active, search_text)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `).bind(code, parsed.data.brand_id, parsed.data.product_line_id ?? null, parsed.data.category_id, parsed.data.product_type_id, nullable(parsed.data.variant_group), parsed.data.product_name, nullable(parsed.data.shade_code), nullable(parsed.data.content_value), nullable(parsed.data.content_unit), parsed.data.order_unit, parsed.data.supplier_id ?? null, nullable(parsed.data.supplier_sku), nullable(parsed.data.barcode_gtin), parsed.data.sale_price_cents ?? null, parsed.data.active ? 1 : 0, searchText).run();
   const product = await context.env.ELLAS_DB.prepare(`${productSelect} WHERE p.internal_product_code = ?`).bind(code).first();
   return json({ product }, { status: 201 });
 }
@@ -323,9 +325,9 @@ async function updateProduct(context: PagesContext, id: number) {
   const code = parsed.data.internal_product_code?.trim() || existing.internal_product_code;
   const searchText = await productSearchText(context.env.ELLAS_DB, { ...parsed.data, internal_product_code: code });
   await context.env.ELLAS_DB.prepare(`
-    UPDATE products SET internal_product_code = ?, brand_id = ?, product_line_id = ?, category_id = ?, product_type_id = ?, variant_group = ?, product_name = ?, shade_code = ?, content_value = ?, content_unit = ?, order_unit = ?, supplier_id = ?, supplier_sku = ?, barcode_gtin = ?, active = ?, search_text = ?, updated_at = datetime('now')
+    UPDATE products SET internal_product_code = ?, brand_id = ?, product_line_id = ?, category_id = ?, product_type_id = ?, variant_group = ?, product_name = ?, shade_code = ?, content_value = ?, content_unit = ?, order_unit = ?, supplier_id = ?, supplier_sku = ?, barcode_gtin = ?, sale_price_cents = ?, active = ?, search_text = ?, updated_at = datetime('now')
     WHERE id = ?
-  `).bind(code, parsed.data.brand_id, parsed.data.product_line_id ?? null, parsed.data.category_id, parsed.data.product_type_id, nullable(parsed.data.variant_group), parsed.data.product_name, nullable(parsed.data.shade_code), nullable(parsed.data.content_value), nullable(parsed.data.content_unit), parsed.data.order_unit, parsed.data.supplier_id ?? null, nullable(parsed.data.supplier_sku), nullable(parsed.data.barcode_gtin), parsed.data.active ? 1 : 0, searchText, id).run();
+  `).bind(code, parsed.data.brand_id, parsed.data.product_line_id ?? null, parsed.data.category_id, parsed.data.product_type_id, nullable(parsed.data.variant_group), parsed.data.product_name, nullable(parsed.data.shade_code), nullable(parsed.data.content_value), nullable(parsed.data.content_unit), parsed.data.order_unit, parsed.data.supplier_id ?? null, nullable(parsed.data.supplier_sku), nullable(parsed.data.barcode_gtin), parsed.data.sale_price_cents ?? null, parsed.data.active ? 1 : 0, searchText, id).run();
   const product = await context.env.ELLAS_DB.prepare(`${productSelect} WHERE p.id = ?`).bind(id).first();
   return json({ product });
 }

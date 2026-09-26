@@ -58,6 +58,9 @@ const exactProductImages: Record<string, ProductImage> = {
   "EH-1269": { src: "/assets/products/olaplex-eh-1269-no2-bond-perfector-525ml.jpg", alt: "OLAPLEX Nº.2 Bond Perfector 525 ml" },
   "EH-1270": { src: "/assets/products/olaplex-eh-1270-no2-bond-perfector-backbar-2000ml.png", alt: "OLAPLEX Nº.2 Bond Perfector Backbar 2000 ml" },
   "EH-1294": { src: "/assets/products/deluxe-bleach-500g.webp", alt: "DELUXE Deluxe Bleach 500 g" },
+  "EH-1095": { src: "/assets/products/schwarzkopf-silhouette-super-hold-hairspray.webp", alt: "Schwarzkopf Silhouette Super Hold Hairspray" },
+  "EH-1096": { src: "/assets/products/schwarzkopf-silhouette-super-hold-mousse.webp", alt: "Schwarzkopf Silhouette Super Hold Mousse" },
+  "EH-1305": { src: "/assets/products/schwarzkopf-silhouette-super-hold-hairspray.webp", alt: "Schwarzkopf Silhouette Super Hold Hairspray" },
   "EH-1306": { src: "/assets/products/schwarzkopf-silhouette-flexible-hold-hairspray.jpg", alt: "Schwarzkopf Silhouette Flexible Hold Hairspray" },
   "EH-1309": { src: "/assets/products/fanola-no-yellow-shampoo.jpg", alt: "Fanola No Yellow Shampoo 350 ml" },
   "EH-1310": { src: "/assets/products/fanola-no-yellow-shampoo.jpg", alt: "Fanola No Yellow Shampoo 1000 ml" }
@@ -147,6 +150,12 @@ export function productImage(product: Product): ProductImage | null {
   }
   if (has(brand, "Schwarzkopf") && has(combined, "Silhouette") && has(combined, "Flexible Hold Hairspray")) {
     return { src: "/assets/products/schwarzkopf-silhouette-flexible-hold-hairspray.jpg", alt: "Schwarzkopf Silhouette Flexible Hold Hairspray" };
+  }
+  if (has(brand, "Schwarzkopf") && has(combined, "Silhouette") && has(combined, "Super Hold Hairspray")) {
+    return { src: "/assets/products/schwarzkopf-silhouette-super-hold-hairspray.webp", alt: "Schwarzkopf Silhouette Super Hold Hairspray" };
+  }
+  if (has(brand, "Schwarzkopf") && has(combined, "Silhouette") && has(combined, "Super Hold Mousse")) {
+    return { src: "/assets/products/schwarzkopf-silhouette-super-hold-mousse.webp", alt: "Schwarzkopf Silhouette Super Hold Mousse" };
   }
   if (has(brand, "Schwarzkopf") && has(combined, "Silhouette") && has(combined, "Flexible Hold Mousse")) {
     return { src: "/assets/products/schwarzkopf-silhouette-flexible-hold-mousse.avif", alt: "Schwarzkopf Silhouette Flexible Hold Mousse" };

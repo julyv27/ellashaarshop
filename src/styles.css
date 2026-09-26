@@ -312,6 +312,20 @@ main {
   color: #665c4a;
 }
 
+.sale-price {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 8px;
+  padding: 5px 8px;
+  border: 1px solid #d8bf67;
+  border-radius: 6px;
+  background: #fff7d8;
+  color: #4f3f0b;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
 small {
   color: #7a705f;
 }
