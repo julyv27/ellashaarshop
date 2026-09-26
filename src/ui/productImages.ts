@@ -57,6 +57,7 @@ const exactProductImages: Record<string, ProductImage> = {
   "EH-1268": { src: "/assets/products/olaplex-eh-1268-no1-bond-multiplier-525ml.jpg", alt: "OLAPLEX Nº.1 Bond Multiplier 525 ml" },
   "EH-1269": { src: "/assets/products/olaplex-eh-1269-no2-bond-perfector-525ml.jpg", alt: "OLAPLEX Nº.2 Bond Perfector 525 ml" },
   "EH-1270": { src: "/assets/products/olaplex-eh-1270-no2-bond-perfector-backbar-2000ml.png", alt: "OLAPLEX Nº.2 Bond Perfector Backbar 2000 ml" },
+  "EH-1294": { src: "/assets/products/deluxe-bleach-500g.webp", alt: "DELUXE Deluxe Bleach 500 g" },
   "EH-1306": { src: "/assets/products/schwarzkopf-silhouette-flexible-hold-hairspray.jpg", alt: "Schwarzkopf Silhouette Flexible Hold Hairspray" },
   "EH-1309": { src: "/assets/products/fanola-no-yellow-shampoo.jpg", alt: "Fanola No Yellow Shampoo 350 ml" },
   "EH-1310": { src: "/assets/products/fanola-no-yellow-shampoo.jpg", alt: "Fanola No Yellow Shampoo 1000 ml" }

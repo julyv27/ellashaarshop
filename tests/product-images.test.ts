@@ -123,6 +123,18 @@ describe("product images", () => {
       {
         product: {
           ...base,
+          internal_product_code: "EH-1294",
+          brand_name: "DELUXE",
+          product_line_name: "DELUXE",
+          product_name: "DELUXE Deluxe Bleach",
+          content_value: "500",
+          content_unit: "g"
+        },
+        src: "/assets/products/deluxe-bleach-500g.webp"
+      },
+      {
+        product: {
+          ...base,
           internal_product_code: "EH-1306",
           brand_name: "Schwarzkopf",
           product_line_name: "Silhouette",
